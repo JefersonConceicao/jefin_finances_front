@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['MontSerrat', 'sans-serif']
+      },
+      width:{
+        'card-auth': '90%'
+      }
+    },
   },
   plugins: [],
 }
