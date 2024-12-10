@@ -7,6 +7,7 @@ import InputLabel from '@/components/InputLabel.vue'
 import TextInput from '@/components/TextInput.vue'
 import ButtonAction from '@/components/ButtonAction.vue'
 import api from '@/api';
+
 import { useRouter } from 'vue-router';
 
 const form = reactive({
@@ -23,13 +24,12 @@ const handleSubmit = async () => {
   const response = await api.post('/login', form);
 
   if (response.status == 200 && !!response.data.access_token) {
-    localStorage.setItem('jwt_token', response.data.access_token);
+    localStorage.setItem('data_user', JSON.stringify(response.data));
     router.push('/dashboard');
   }
 
   form.isLoading = false;
 }
-
 </script>
 
 <template>

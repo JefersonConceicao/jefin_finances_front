@@ -1,5 +1,5 @@
 <script setup>
-import DollarIcon from '@/components/icons/DollarIcon.vue'
+  import DollarIcon from '@/components/icons/DollarIcon.vue'
 </script>
 
 <template>
