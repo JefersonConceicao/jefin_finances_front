@@ -5,16 +5,15 @@ import App from './App.vue'
 import router from './router'
 const app = createApp(App)
 
-app.use(router)
-app.mount('#app')
+app
+  .use(router)
 
+app.mount('#app')
 
 router.isReady().then(() => {
   const userLogged = JSON.parse(localStorage.getItem('data_user'));
 
-  if(userLogged.access_token){
-    router.push('/dashboard')
-  }else{
+  if(!userLogged || !userLogged.access_token){
     router.push('/login')
   }
 })

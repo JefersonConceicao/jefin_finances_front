@@ -19,16 +19,23 @@ const form = reactive({
 const router = useRouter();
 
 const handleSubmit = async () => {
-  form.isLoading = true;
+  try {
+    form.isLoading = true;
 
-  const response = await api.post('/login', form);
+    const response = await api.post('/login', form);
 
-  if (response.status == 200 && !!response.data.access_token) {
-    localStorage.setItem('data_user', JSON.stringify(response.data));
-    router.push('/dashboard');
+    if (response.status == 200 && !!response.data.access_token) {
+      localStorage.setItem('data_user', JSON.stringify(response.data));
+      router.push('/dashboard');
+    }
+
+    form.isLoading = false;
+
+  } catch (err) {
+    form.isLoading = false;
+    alert(err);
   }
 
-  form.isLoading = false;
 }
 </script>
 

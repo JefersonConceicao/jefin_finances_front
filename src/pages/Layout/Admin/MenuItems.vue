@@ -1,6 +1,0 @@
-<script>
-</script>
-
-<tempalte>
-
-</tempalte>

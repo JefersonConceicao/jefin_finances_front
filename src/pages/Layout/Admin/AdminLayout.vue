@@ -1,7 +1,11 @@
 <script setup>
 import DollarIcon from '@/components/icons/DollarIcon.vue';
 import AdminFooter from '@/pages/Layout/Admin/AdminFooter.vue'
+import MenuItem from '@/pages/Layout/Admin/MenuItem.vue'
 import { HomeIcon, ListBulletIcon, CogIcon } from '@heroicons/vue/24/solid'
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <template>
@@ -18,6 +22,7 @@ import { HomeIcon, ListBulletIcon, CogIcon } from '@heroicons/vue/24/solid'
         <header class="font-bold text-lg">
           <slot name="header" />
         </header>
+
         <main>
           <slot />
         </main>
@@ -27,9 +32,18 @@ import { HomeIcon, ListBulletIcon, CogIcon } from '@heroicons/vue/24/solid'
 
 
     <AdminFooter>
-      <ListBulletIcon class="size-8 text-green-500" />
-      <HomeIcon class="size-8 text-green-500" />
-      <CogIcon class="size-8 text-green-500" />
+      <MenuItem link="/menu" :active="route.path === '/menu'">
+        <ListBulletIcon />
+      </MenuItem>
+
+      <MenuItem link="/dashboard" :active="route.path === '/dashboard'">
+        <HomeIcon />
+      </MenuItem>
+
+      <MenuItem link="/settings" :active="route.path === '/settings'">
+        <CogIcon />
+      </MenuItem>
+
     </AdminFooter>
   </div>
 </template>
